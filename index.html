@@ -1,278 +1,254 @@
  <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>OHM GOLDEN — Services Électriques à Montréal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Lateef&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --primary:#001b4d;
-      --accent:#e60000;
-      --gold:#f2c94c;
-      --bg:#f4f6fa;
-      --card-bg:#ffffff;
-      --muted:#666;
-      --radius:14px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family: 'Montserrat', Arial, sans-serif;background:var(--bg);color:#111;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1.5;}
-    
-    /* Top bar / header */
-    .topbar{background:linear-gradient(120deg,var(--primary), #003d8a);color:#fff;padding:20px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:100;}
-    .brand{display:flex;align-items:center;gap:14px;}
-    .brand img{width:72px;height:72px;object-fit:contain;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(0,0,0,0.06));padding:10px;box-shadow:0 6px 20px rgba(0,0,0,0.12);}
-    .brand h1{font-size:20px;letter-spacing:1px;margin:0;font-weight:800;}
-    .brand p{margin:0;font-size:13px;opacity:0.95;}
-    
-    /* language switcher */
-    .lang-switch{display:flex;gap:8px;align-items:center;}
-    .lang-btn{background:transparent;border:2px solid rgba(255,255,255,0.14);color:#fff;padding:8px 12px;border-radius:10px;cursor:pointer;font-weight:700;transition:transform .18s ease, background .18s ease, border-color .18s ease;}
-    .lang-btn:active{transform:scale(.98)}
-    .lang-btn.active{background:var(--gold);color:var(--primary);border-color:var(--gold);}
-    
-    /* main content */
-    main{max-width:1100px;margin:40px auto;padding:0 16px 60px;}
-    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.95), var(--card-bg));border-radius:var(--radius);padding:30px;box-shadow:0 10px 30px rgba(8,20,40,0.08);}
-    .hero h2{margin:0 0 10px;color:var(--primary);font-size:28px;font-weight:800;}
-    .hero p.lead{color:var(--muted);margin-bottom:18px;}
-    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
-    .badge{background:linear-gradient(90deg, rgba(230,0,0,0.12), rgba(242,201,76,0.06));padding:8px 12px;border-radius:999px;font-weight:700;color:var(--primary);box-shadow:0 6px 18px rgba(0,0,0,0.06);display:inline-flex;align-items:center;gap:8px;font-size:13px;}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-block;padding:12px 18px;border-radius:12px;font-weight:800;text-decoration:none;cursor:pointer;border:0;}
-    .btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 25px rgba(0,27,77,0.16);}
-    .btn-outline{background:transparent;border:2px solid var(--primary);color:var(--primary);}
-    .cta-note{margin-top:12px;font-size:13px;color:var(--muted);}
-    
-    /* right column card */
-    .contact-card{background:linear-gradient(180deg,#fff, #fcfcff);border-radius:12px;padding:20px;box-shadow:0 10px 30px rgba(10,20,40,0.06);text-align:center;}
-    .contact-card h3{margin:10px 0 6px;color:var(--primary);font-size:18px;}
-    .contact-card a.phone{display:inline-block;padding:12px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent), #ff6b6b);color:#fff;font-weight:800;text-decoration:none;margin-top:8px;box-shadow:0 8px 20px rgba(230,0,0,0.18);}
-    .small{font-size:13px;color:var(--muted);margin-top:8px;}
-    .contact-card a.facebook{display:inline-flex;align-items:center;gap:6px;color:#4267B2;font-weight:700;text-decoration:none;margin-top:10px;}
-    .contact-card a.facebook svg{width:16px;height:16px;fill:currentColor;}
-    
-    /* services grid */
-    .section{margin-top:40px;}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
-    .service{background:linear-gradient(180deg, #fff, #fbfbff);padding:20px;border-radius:12px;box-shadow:0 8px 20px rgba(8,20,40,0.06);transition:transform .22s ease, box-shadow .22s ease;}
-    .service:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(8,20,40,0.08);}
-    .service h4{color:var(--accent);margin:0 0 8px;font-size:16px;}
-    .service p{color:var(--muted);margin:0;font-size:14px;line-height:1.6;}
-    
-    /* footer */
-    footer{background:linear-gradient(0deg,#00142a, #00224a);color:#fff;padding:26px 16px;margin-top:60px;border-top:4px solid rgba(242,201,76,0.12);text-align:center;font-size:14px;}
-    footer a.facebook{display:inline-flex;align-items:center;gap:6px;color:#4267B2;text-decoration:none;font-weight:700;margin-top:6px;}
-    footer a.facebook svg{width:16px;height:16px;fill:currentColor;}
-    
-    /* hide/show languages */
-    .lang { display: none; }
-    .visible { display: block; }
-    
-    /* RTL adjustments */
-    [dir="rtl"] .topbar{direction:rtl}
-    [dir="rtl"] .brand{flex-direction:row-reverse}
-    [dir="rtl"] .cta-row{justify-content:flex-end}
-    [dir="rtl"] .hero{grid-template-columns:380px 1fr}
-    
-    /* small screens */
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;gap:18px}
-      .hero img{width:64px;height:64px}
-      .hero h2{font-size:24px}
-      .hero p.lead{font-size:15px}
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OHM GOLDEN — Services Électriques à Montréal</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Lateef&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#001b4d;
+  --accent:#e60000;
+  --gold:#f2c94c;
+  --bg:#f8f9fb;
+  --card-bg:#ffffff;
+  --muted:#666;
+  --radius:16px;
+  --shadow-light:0 4px 12px rgba(0,0,0,0.06);
+  --shadow-strong:0 12px 40px rgba(0,0,0,0.12);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Montserrat', Arial, sans-serif;background:var(--bg);color:#111;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;scroll-behavior:smooth;}
+a{text-decoration:none;transition:all .3s ease;}
+img{display:block;max-width:100%;height:auto;}
+
+/* Header */
+.topbar{
+  background:linear-gradient(120deg,var(--primary), #003d8a);
+  color:#fff;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;
+  position:sticky;top:0;z-index:100;box-shadow:var(--shadow-light);
+}
+.brand{display:flex;align-items:center;gap:18px;}
+.brand img{width:72px;height:72px;object-fit:contain;border-radius:14px;padding:8px;background:linear-gradient(90deg, rgba(255,255,255,0.04), rgba(0,0,0,0.08));box-shadow:var(--shadow-light);}
+.brand h1{margin:0;font-size:22px;font-weight:800;letter-spacing:1px;}
+.brand p{margin:0;font-size:13px;opacity:0.9;}
+
+/* Language switcher */
+.lang-switch{display:flex;gap:10px;align-items:center;}
+.lang-btn{padding:8px 14px;border-radius:12px;border:2px solid rgba(255,255,255,0.2);background:transparent;color:#fff;font-weight:700;cursor:pointer;transition:all .25s ease;}
+.lang-btn.active{background:var(--gold);color:var(--primary);border-color:var(--gold);}
+.lang-btn:hover{transform:scale(1.05);}
+
+/* Main */
+main{max-width:1200px;margin:40px auto;padding:0 20px 80px;}
+.hero{display:grid;grid-template-columns:1fr 400px;gap:32px;align-items:center;}
+.hero-card{background:var(--card-bg);border-radius:var(--radius);padding:36px;box-shadow:var(--shadow-strong);transition:transform .3s ease, box-shadow .3s ease;}
+.hero-card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,0,0,0.15);}
+.hero h2{margin:0 0 14px;color:var(--primary);font-size:30px;font-weight:800;}
+.hero p.lead{margin-bottom:20px;color:var(--muted);font-size:16px;}
+.badges{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;}
+.badge{background:linear-gradient(90deg, rgba(230,0,0,0.15), rgba(242,201,76,0.08));padding:10px 16px;border-radius:999px;font-weight:700;color:var(--primary);box-shadow:var(--shadow-light);display:inline-flex;align-items:center;gap:8px;font-size:14px;}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;}
+.btn{padding:14px 20px;border-radius:14px;font-weight:800;border:0;cursor:pointer;transition:all .3s ease;}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 10px 30px rgba(0,27,77,0.2);}
+.btn-primary:hover{background:#002666;}
+.btn-outline{background:transparent;border:2px solid var(--primary);color:var(--primary);}
+.btn-outline:hover{background:var(--primary);color:#fff;}
+.cta-note{margin-top:16px;font-size:14px;color:var(--muted);}
+
+/* Contact card */
+.contact-card{background:var(--card-bg);border-radius:var(--radius);padding:28px;text-align:center;box-shadow:var(--shadow-strong);transition:transform .3s ease, box-shadow .3s ease;}
+.contact-card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,0,0,0.15);}
+.contact-card h3{margin:0 0 10px;color:var(--primary);font-size:20px;}
+.contact-card a.phone{display:inline-block;padding:14px 20px;border-radius:12px;background:linear-gradient(90deg,var(--accent), #ff6b6b);color:#fff;font-weight:800;box-shadow:0 8px 25px rgba(230,0,0,0.2);}
+.contact-card a.facebook{display:inline-flex;align-items:center;gap:8px;margin-top:12px;color:#4267B2;font-weight:700;}
+.contact-card a.facebook svg{width:18px;height:18px;fill:currentColor;}
+
+/* Services */
+.section{margin-top:50px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+.service{background:var(--card-bg);padding:24px;border-radius:var(--radius);box-shadow:var(--shadow-light);transition:transform .3s ease, box-shadow .3s ease;}
+.service:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(0,0,0,0.15);}
+.service h4{margin:0 0 10px;color:var(--accent);font-size:17px;font-weight:700;}
+.service p{margin:0;color:var(--muted);font-size:15px;line-height:1.6;}
+
+/* Footer */
+footer{background:linear-gradient(0deg,#00142a, #00224a);color:#fff;padding:36px 20px;text-align:center;font-size:15px;border-top:4px solid rgba(242,201,76,0.15);}
+footer a.facebook{display:inline-flex;align-items:center;gap:6px;color:#4267B2;font-weight:700;text-decoration:none;margin-top:6px;}
+footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
+
+/* Hide/show languages */
+.lang{display:none;}
+.visible{display:block;}
+
+/* RTL adjustments */
+[dir="rtl"] .topbar{direction:rtl}
+[dir="rtl"] .brand{flex-direction:row-reverse}
+[dir="rtl"] .cta-row{justify-content:flex-end}
+[dir="rtl"] .hero{grid-template-columns:400px 1fr}
+
+/* Responsive */
+@media (max-width:1024px){.hero{grid-template-columns:1fr 1fr;}}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:24px}.hero h2{font-size:26px}.hero p.lead{font-size:15px}.hero img{width:64px;height:64px}}
+@media (max-width:600px){.hero{grid-template-columns:1fr}.cta-row{flex-direction:column;}.btn{width:100%;text-align:center}.contact-card a.phone{width:100%}}
+</style>
 </head>
 <body>
-  <header class="topbar" role="banner">
-    <div class="brand" aria-label="OHM GOLDEN">
-      <img src="logo.png" alt="OHM GOLDEN logo" id="logo">
-      <div>
-        <h1>
-          <span class="lang lang-fr">OHM GOLDEN</span>
-          <span class="lang lang-en">OHM GOLDEN</span>
-          <span class="lang lang-ar">أوه إم جولدن</span>
-        </h1>
-        <p class="lang lang-fr">Services électriques fiables à Montréal</p>
-        <p class="lang lang-en">Reliable electrical services in Montreal</p>
-        <p class="lang lang-ar">خدمات كهربائية موثوقة في مونتريال</p>
-      </div>
+<header class="topbar" role="banner">
+  <div class="brand" aria-label="OHM GOLDEN">
+    <img src="logo.png" alt="OHM GOLDEN logo">
+    <div>
+      <h1>
+        <span class="lang lang-fr">OHM GOLDEN</span>
+        <span class="lang lang-en">OHM GOLDEN</span>
+        <span class="lang lang-ar">أوه إم جولدن</span>
+      </h1>
+      <p class="lang lang-fr">Services électriques fiables à Montréal</p>
+      <p class="lang lang-en">Reliable electrical services in Montreal</p>
+      <p class="lang lang-ar">خدمات كهربائية موثوقة في مونتريال</p>
+    </div>
+  </div>
+  <nav class="lang-switch" aria-label="Language switcher">
+    <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+    <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    <button class="lang-btn" data-lang="ar" aria-pressed="false">AR</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-card">
+    <h2 class="lang lang-fr visible">Électriciens Certifiés — Intervention Rapide</h2>
+    <h2 class="lang lang-en">Certified Electricians — Fast Response</h2>
+    <h2 class="lang lang-ar">فنيون كهربائيون معتمدون — استجابة سريعة</h2>
+
+    <p class="lead lang lang-fr visible">OHM GOLDEN offre des solutions complètes : installations, rénovations, réparations et inspections.</p>
+    <p class="lead lang lang-en">OHM GOLDEN provides full solutions: installations, renovations, repairs and inspections.</p>
+    <p class="lead lang lang-ar">تقدّم OHM GOLDEN خدمات شاملة: تركيب، تجديد، إصلاحات وفحوصات كهربائية.</p>
+
+    <div class="badges">
+      <div class="badge"><span class="lang lang-fr">RBQ</span><span class="lang lang-en">RBQ</span><span class="lang lang-ar">RBQ</span> • 5850-3566-01</div>
+      <div class="badge"><span class="lang lang-fr">Devis gratuit</span><span class="lang lang-en">Free quote</span><span class="lang lang-ar">عرض مجاني</span></div>
+      <div class="badge"><span class="lang lang-fr">24/7</span><span class="lang lang-en">24/7</span><span class="lang lang-ar">24/7</span> Service d'urgence</div>
     </div>
 
-    <nav class="lang-switch" aria-label="Language switcher">
-      <button class="lang-btn" data-lang="fr" id="btn-fr" aria-pressed="false">FR</button>
-      <button class="lang-btn" data-lang="en" id="btn-en" aria-pressed="false">EN</button>
-      <button class="lang-btn" data-lang="ar" id="btn-ar" aria-pressed="false">AR</button>
-    </nav>
-  </header>
+    <div class="cta-row">
+      <a class="btn btn-primary lang lang-fr visible" href="tel:5145667760">Appelez-nous: 514-566-7760</a>
+      <a class="btn btn-primary lang lang-en" href="tel:5145667760">Call us: 514-566-7760</a>
+      <a class="btn btn-primary lang lang-ar" href="tel:5145667760">اتصل الآن: 514-566-7760</a>
 
-  <main>
-    <section class="hero">
-      <div class="hero-card">
-        <h2 class="lang lang-fr visible">Électriciens Certifiés — Intervention Rapide</h2>
-        <h2 class="lang lang-en">Certified Electricians — Fast Response</h2>
-        <h2 class="lang lang-ar">فنيون كهربائيون معتمدون — استجابة سريعة</h2>
+      <a class="btn btn-outline" href="#services">
+        <span class="lang lang-fr">Nos Services</span>
+        <span class="lang lang-en">Our Services</span>
+        <span class="lang lang-ar">خدماتنا</span>
+      </a>
+    </div>
 
-        <p class="lead lang lang-fr visible">OHM GOLDEN offre des solutions complètes : installations, rénovations, réparations et inspections.</p>
-        <p class="lead lang lang-en">OHM GOLDEN provides full solutions: installations, renovations, repairs and inspections.</p>
-        <p class="lead lang lang-ar">تقدّم OHM GOLDEN خدمات شاملة: تركيب، تجديد، إصلاحات وفحوصات كهربائية.</p>
+    <p class="cta-note lang lang-fr visible">Intervention rapide — Devis sur place — Travaux sécurisés</p>
+    <p class="cta-note lang lang-en">Fast response — On-site quotes — Safe workmanship</p>
+    <p class="cta-note lang lang-ar">استجابة سريعة — عرض في الموقع — أعمال آمنة</p>
+  </div>
 
-        <div class="badges">
-          <div class="badge"><span class="lang lang-fr">RBQ</span><span class="lang lang-en">RBQ</span><span class="lang lang-ar">RBQ</span> • 5850-3566-01</div>
-          <div class="badge"><span class="lang lang-fr">Devis gratuit</span><span class="lang lang-en">Free quote</span><span class="lang lang-ar">عرض مجاني</span></div>
-          <div class="badge"><span class="lang lang-fr">24/7</span><span class="lang lang-en">24/7</span><span class="lang lang-ar">24/7</span> Service d'urgence</div>
-        </div>
+  <aside class="contact-card">
+    <h3 class="lang lang-fr visible">Contact Rapide</h3>
+    <h3 class="lang lang-en">Quick Contact</h3>
+    <h3 class="lang lang-ar">تواصل سريع</h3>
 
-        <div class="cta-row">
-          <a class="btn btn-primary lang lang-fr visible" href="tel:5145667760">Appelez-nous: 514-566-7760</a>
-          <a class="btn btn-primary lang lang-en" href="tel:5145667760">Call us: 514-566-7760</a>
-          <a class="btn btn-primary lang lang-ar" href="tel:5145667760">اتصل الآن: 514-566-7760</a>
-
-          <a class="btn btn-outline" href="#services">
-            <span class="lang lang-fr">Nos Services</span>
-            <span class="lang lang-en">Our Services</span>
-            <span class="lang lang-ar">خدماتنا</span>
-          </a>
-        </div>
-
-        <p class="cta-note lang lang-fr visible">Intervention rapide — Devis sur place — Travaux sécurisés</p>
-        <p class="cta-note lang lang-en">Fast response — On-site quotes — Safe workmanship</p>
-        <p class="cta-note lang lang-ar">استجابة سريعة — عرض في الموقع — أعمال آمنة</p>
-      </div>
-
-      <aside class="contact-card">
-        <h3 class="lang lang-fr visible">Contact Rapide</h3>
-        <h3 class="lang lang-en">Quick Contact</h3>
-        <h3 class="lang lang-ar">تواصل سريع</h3>
-
-        <a class="phone" href="tel:5145667760">514-566-7760</a>
-        <div class="small">
-          <div class="lang lang-fr visible">info.ohmgolden@gmail.com</div>
-          <div class="lang lang-en">info.ohmgolden@gmail.com</div>
-          <div class="lang lang-ar">info.ohmgolden@gmail.com</div>
-        </div>
-        <div class="small" style="margin-top:10px">
-          <div class="lang lang-fr visible">RBQ: 5850-3566-01</div>
-          <div class="lang lang-en">RBQ: 5850-3566-01</div>
-          <div class="lang lang-ar">RBQ: 5850-3566-01</div>
-        </div>
-
-        <!-- Facebook link -->
-        <a class="facebook" href="https://www.facebook.com/OhmGoldeen/" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987H7.898v-2.892h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.462h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.892h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/></svg>
-          <span>Facebook</span>
-        </a>
-      </aside>
-    </section>
-
-    <section id="services" class="section">
-      <h3 class="lang lang-fr visible">Nos Services</h3>
-      <h3 class="lang lang-en">Our Services</h3>
-      <h3 class="lang lang-ar">خدماتنا</h3>
-
-      <div class="grid" style="margin-top:14px">
-        <div class="service">
-          <h4 class="lang lang-fr">Installation & Éclairage</h4>
-          <h4 class="lang lang-en">Installation & Lighting</h4>
-          <h4 class="lang lang-ar">التركيب والإضاءة</h4>
-          <p class="lang lang-fr">Solutions complètes pour résidentiel et commercial.</p>
-          <p class="lang lang-en">Complete solutions for residential & commercial.</p>
-          <p class="lang lang-ar">حلول كاملة للمنازل والمحلات التجارية.</p>
-        </div>
-
-        <div class="service">
-          <h4 class="lang lang-fr">Rénovations Électriques</h4>
-          <h4 class="lang lang-en">Electrical Renovations</h4>
-          <h4 class="lang lang-ar">تجديدات كهربائية</h4>
-          <p class="lang lang-fr">Mise à niveau des installations pour la sécurité et l'efficacité.</p>
-          <p class="lang lang-en">Upgrades for safety and efficiency.</p>
-          <p class="lang lang-ar">تحديثات للسلامة والكفاءة.</p>
-        </div>
-
-        <div class="service">
-          <h4 class="lang lang-fr">Réparation de Pannes</h4>
-          <h4 class="lang lang-en">Troubleshooting & Repairs</h4>
-          <h4 class="lang lang-ar">تشخيص وإصلاح الأعطال</h4>
-          <p class="lang lang-fr">Intervention rapide 24/7 pour toutes pannes électriques.</p>
-          <p class="lang lang-en">24/7 fast response for electrical faults.</p>
-          <p class="lang lang-ar">استجابة سريعة 24/7 لجميع الأعطال الكهربائية.</p>
-        </div>
-
-        <div class="service">
-          <h4 class="lang lang-fr">Mises à Niveau des Panneaux</h4>
-          <h4 class="lang lang-en">Panel Upgrades</h4>
-          <h4 class="lang lang-ar">ترقيات اللوحات الكهربائية</h4>
-          <p class="lang lang-fr">Remplacement et modernisation des panneaux.</p>
-          <p class="lang lang-en">Replacement and modernization of panels.</p>
-          <p class="lang lang-ar">استبدال وتحديث اللوحات الكهربائية.</p>
-        </div>
-
-        <div class="service">
-          <h4 class="lang lang-fr">Inspection Électrique</h4>
-          <h4 class="lang lang-en">Electrical Inspections</h4>
-          <h4 class="lang lang-ar">فحوصات كهربائية</h4>
-          <p class="lang lang-fr">Rapports détaillés et recommandations professionnelles.</p>
-          <p class="lang lang-en">Detailed reports and professional recommendations.</p>
-          <p class="lang lang-ar">تقارير مفصلة وتوصيات مهنية.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="lang lang-fr visible">© 2025 OHM GOLDEN Québec inc. — Services électriques à Montréal</div>
-    <div class="lang lang-en">© 2025 OHM GOLDEN Québec inc. — Electrical services in Montreal</div>
-    <div class="lang lang-ar">© 2025 OHM GOLDEN Québec inc. — خدمات كهربائية في مونتريال</div>
+    <a class="phone" href="tel:5145667760">514-566-7760</a>
+    <div class="small lang lang-fr visible">info.ohmgolden@gmail.com</div>
+    <div class="small lang lang-en">info.ohmgolden@gmail.com</div>
+    <div class="small lang lang-ar">info.ohmgolden@gmail.com</div>
 
     <a class="facebook" href="https://www.facebook.com/OhmGoldeen/" target="_blank">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987H7.898v-2.892h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.462h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.892h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/></svg>
       <span>Facebook</span>
     </a>
-  </footer>
+  </aside>
+</section>
 
-  <script>
-    const AVAILABLE = ['fr','en','ar'];
-    const defaultLang = 'fr';
-    const langButtons = document.querySelectorAll('.lang-btn');
+<section id="services" class="section">
+  <h3 class="lang lang-fr visible">Nos Services</h3>
+  <h3 class="lang lang-en">Our Services</h3>
+  <h3 class="lang lang-ar">خدماتنا</h3>
 
-    function showLang(lang){
-      if (!AVAILABLE.includes(lang)) lang = defaultLang;
-      document.querySelectorAll('.lang').forEach(el=>el.classList.remove('visible'));
-      document.querySelectorAll(`.lang.lang-${lang}`).forEach(el=>el.classList.add('visible'));
-      document.documentElement.lang = (lang === 'ar') ? 'ar' : (lang === 'fr' ? 'fr' : 'en');
-      document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-      langButtons.forEach(btn=>{
-        if (btn.dataset.lang === lang){btn.classList.add('active'); btn.setAttribute('aria-pressed','true');}
-        else {btn.classList.remove('active'); btn.setAttribute('aria-pressed','false');}
-      });
-      try { localStorage.setItem('ohm_lang', lang); } catch(e){}
-    }
+  <div class="grid" style="margin-top:14px">
+    <!-- Repeat each service card here -->
+    <div class="service">
+      <h4 class="lang lang-fr">Installation & Éclairage</h4>
+      <h4 class="lang lang-en">Installation & Lighting</h4>
+      <h4 class="lang lang-ar">التركيب والإضاءة</h4>
+      <p class="lang lang-fr">Solutions complètes pour résidentiel et commercial.</p>
+      <p class="lang lang-en">Complete solutions for residential & commercial.</p>
+      <p class="lang lang-ar">حلول كاملة للمنازل والمحلات التجارية.</p>
+    </div>
+    <div class="service">
+      <h4 class="lang lang-fr">Rénovations Électriques</h4>
+      <h4 class="lang lang-en">Electrical Renovations</h4>
+      <h4 class="lang lang-ar">تجديدات كهربائية</h4>
+      <p class="lang lang-fr">Mise à niveau des installations pour la sécurité et l'efficacité.</p>
+      <p class="lang lang-en">Upgrades for safety and efficiency.</p>
+      <p class="lang lang-ar">تحديثات للسلامة والكفاءة.</p>
+    </div>
+    <div class="service">
+      <h4 class="lang lang-fr">Réparation de Pannes</h4>
+      <h4 class="lang lang-en">Troubleshooting & Repairs</h4>
+      <h4 class="lang lang-ar">تشخيص وإصلاح الأعطال</h4>
+      <p class="lang lang-fr">Intervention rapide 24/7 pour toutes pannes électriques.</p>
+      <p class="lang lang-en">24/7 fast response for electrical faults.</p>
+      <p class="lang lang-ar">استجابة سريعة 24/7 لجميع الأعطال الكهربائية.</p>
+    </div>
+    <div class="service">
+      <h4 class="lang lang-fr">Mises à Niveau des Panneaux</h4>
+      <h4 class="lang lang-en">Panel Upgrades</h4>
+      <h4 class="lang lang-ar">ترقيات اللوحات الكهربائية</h4>
+      <p class="lang lang-fr">Remplacement et modernisation des panneaux.</p>
+      <p class="lang lang-en">Replacement and modernization of panels.</p>
+      <p class="lang lang-ar">استبدال وتحديث اللوحات الكهربائية.</p>
+    </div>
+    <div class="service">
+      <h4 class="lang lang-fr">Inspection Électrique</h4>
+      <h4 class="lang lang-en">Electrical Inspections</h4>
+      <h4 class="lang lang-ar">فحوصات كهربائية</h4>
+      <p class="lang lang-fr">Rapports détaillés et recommandations professionnelles.</p>
+      <p class="lang lang-en">Detailed reports and professional recommendations.</p>
+      <p class="lang lang-ar">تقارير مفصلة وتوصيات مهنية.</p>
+    </div>
+  </div>
+</section>
+</main>
 
-    function detectBrowserLang(){
-      try {
-        const nav = navigator.languages || [navigator.language || navigator.userLanguage || ''];
-        for (const code of nav){
-          if (!code) continue;
-          const c = code.toLowerCase();
-          if (c.startsWith('ar')) return 'ar';
-          if (c.startsWith('fr')) return 'fr';
-          if (c.startsWith('en')) return 'en';
-        }
-      } catch(e){}
-      return defaultLang;
-    }
+<footer>
+  <div class="lang lang-fr visible">© 2025 OHM GOLDEN Québec inc. — Services électriques à Montréal</div>
+  <div class="lang lang-en">© 2025 OHM GOLDEN Québec inc. — Electrical services in Montreal</div>
+  <div class="lang lang-ar">© 2025 OHM GOLDEN Québec inc. — خدمات كهربائية في مونتريال</div>
+  <a class="facebook" href="https://www.facebook.com/OhmGoldeen/" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12c0-5.522-4.477-10-10-10S2 6.478 2 12c0 4.991 3.657 9.128 8.438 9.879v-6.987H7.898v-2.892h2.54V9.845c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.462h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.892h-2.33v6.987C18.343 21.128 22 16.991 22 12z"/></svg>
+    <span>Facebook</span>
+  </a>
+</footer>
 
-    (function initLang(){
-      const stored = (function(){ try { return localStorage.getItem('ohm_lang'); } catch(e){ return null; } })();
-      const start = stored || detectBrowserLang() || defaultLang;
-      showLang(start);
-    })();
+<script>
+const AVAILABLE=['fr','en','ar'];
+const defaultLang='fr';
+const langButtons=document.querySelectorAll('.lang-btn');
 
-    langButtons.forEach(btn=>{
-      btn.addEventListener('click', ()=> showLang(btn.dataset.lang));
-    });
-  </script>
+function showLang(lang){
+  if(!AVAILABLE.includes(lang)) lang=defaultLang;
+  document.querySelectorAll('.lang').forEach(el=>el.classList.remove('visible'));
+  document.querySelectorAll(`.lang.lang-${lang}`).forEach(el=>el.classList.add('visible'));
+  document.documentElement.lang=(lang==='ar')?'ar':(lang==='fr'?'fr':'en');
+  document.documentElement.dir=(lang==='ar')?'rtl':'ltr';
+  langButtons.forEach(btn=>{
+    btn.dataset.lang===lang?btn.classList.add('active')&btn.setAttribute('aria-pressed','true'):btn.classList.remove('active')&btn.setAttribute('aria-pressed','false');
+  });
+  try{localStorage.setItem('ohm_lang',lang);}catch(e){}
+}
+(function initLang(){
+  const stored=(function(){try{return localStorage.getItem('ohm_lang');}catch(e){return null}})();
+  const start=stored||((navigator.languages||[navigator.language||navigator.userLanguage||'']).map(c=>c.toLowerCase()).find(c=>c.startsWith('ar')?c:'fr')||defaultLang);
+  showLang(start);
+})();
+langButtons.forEach(btn=>btn.addEventListener('click',()=>showLang(btn.dataset.lang)));
+</script>
 </body>
 </html>
