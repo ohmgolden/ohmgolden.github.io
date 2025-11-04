@@ -2,7 +2,7 @@
 <html lang="fr" dir="ltr">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OHM GOLDEN — Services Électriques à Montréal</title>
 
 <!-- Fonts & AOS -->
@@ -16,13 +16,13 @@
   --gold:#f2c94c;
   --bg:#f8f9fb;
   --card-bg:#ffffff;
-  --muted:#666;
+  --muted:#ccc;
   --radius:16px;
   --shadow-light:0 4px 12px rgba(0,0,0,0.06);
   --shadow-strong:0 12px 50px rgba(0,0,0,0.15);
   --cta-gradient: linear-gradient(90deg, #e60000, #ff6b6b);
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;}
 html,body{margin:0;padding:0;font-family:'Roboto', Arial, sans-serif;background:var(--bg);color:#111;line-height:1.6;scroll-behavior:smooth;}
 a{text-decoration:none;transition:all .3s ease;}
 img{display:block;max-width:100%;height:auto;}
@@ -78,12 +78,55 @@ img{display:block;max-width:100%;height:auto;}
 .btn-outline:hover{background:var(--primary);color:#fff;transform:scale(1.05);}
 .cta-note{margin-top:16px;font-size:14px;color:var(--muted);text-align:center;}
 
-/* Services Section */
+/* Services Section Fancier 3D */
 .section{margin-top:80px; padding:0 20px;}
-.section h3{font-size:28px;margin-bottom:30px;color:var(--primary);text-align:center;}
+.section h3{font-size:28px;margin-bottom:30px;text-align:center;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
-.service{background:var(--card-bg);padding:24px;border-radius:var(--radius);box-shadow:var(--shadow-light);transition:all .4s ease;text-align:center;position:relative;overflow:hidden;}
-.service:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 50px rgba(0,0,0,0.15);}
+.service {
+  background: linear-gradient(145deg, #0d1b3d, #001b4d);
+  border-radius: 24px;
+  color: #fff;
+  padding: 30px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+  text-align: center;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(242,201,76,0.6);
+}
+.service h4 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f2c94c;
+  text-shadow: 0 0 6px rgba(242,201,76,0.9);
+  margin-bottom: 12px;
+}
+.service p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.6;
+}
+.service::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(242,201,76,0.1) 0%, transparent 70%);
+  opacity: 0.2;
+  transform: rotate(30deg);
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.service:hover {
+  transform: rotateY(10deg) rotateX(5deg) translateY(-10px) scale(1.05);
+  box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+}
+.service:hover::before {
+  opacity: 0.4;
+}
 
 /* Why Choose Us Section */
 .why-us{background:linear-gradient(90deg, #f8f9fb, #e6f0ff);padding:60px 20px;border-radius:20px;margin-top:60px;}
@@ -115,7 +158,7 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
 
 /* Responsive */
 @media (max-width:1024px){.hero{grid-template-columns:1fr 1fr;}}
-@media (max-width:900px){.hero{grid-template-columns:1fr;gap:24px}.hero h2{font-size:32px}.hero p.lead{font-size:15px}}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:24px}.hero h2{font-size:32px}.hero p.lead{font-size:15px}.hero img{width:64px;height:64px}}
 @media (max-width:600px){.hero{grid-template-columns:1fr;}.cta-row{flex-direction:column;}.btn{width:100%;text-align:center}}
 </style>
 </head>
@@ -178,11 +221,11 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
   </div>
 </section>
 
-<!-- Services Section -->
-<section id="services" class="section">
-  <h3 class="lang lang-fr visible" data-aos="fade-up">Nos Services</h3>
-  <h3 class="lang lang-en" data-aos="fade-up">Our Services</h3>
-  <h3 class="lang lang-ar" data-aos="fade-up">خدماتنا</h3>
+<!-- Services Section Fancier 3D -->
+<section id="services" class="section" data-aos="fade-up">
+  <h3 class="lang lang-fr visible">Nos Services</h3>
+  <h3 class="lang lang-en">Our Services</h3>
+  <h3 class="lang lang-ar">خدماتنا</h3>
 
   <div class="grid">
     <div class="service" data-aos="fade-up" data-aos-delay="100">
@@ -202,7 +245,7 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
       <p class="lang lang-ar">تحديثات للسلامة والكفاءة.</p>
     </div>
     <div class="service" data-aos="fade-up" data-aos-delay="300">
-      <h4 class="lang lang-fr">Détection & Réparation</h4>
+      <h4 class="lang lang-fr">Réparation de Pannes</h4>
       <h4 class="lang lang-en">Troubleshooting & Repairs</h4>
       <h4 class="lang lang-ar">تشخيص وإصلاح الأعطال</h4>
       <p class="lang lang-fr">Intervention rapide 24/7 pour toutes pannes électriques.</p>
@@ -249,22 +292,12 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
 
 <!-- Safety Tips Section -->
 <section class="safety">
-  <h3 data-aos="fade-up">
-    <span class="lang lang-fr visible">🏠 Votre sécurité commence avec l'électricité!</span>
-    <span class="lang lang-en">🏠 Your safety starts with your electricity!</span>
-    <span class="lang lang-ar">🏠 سلامتك تبدأ بالكهرباء الخاصة بك!</span>
-  </h3>
-
+  <h3 data-aos="fade-up">🏠 سلامتك تبدأ بالكهرباء الخاصة بك!</h3>
   <p data-aos="fade-up" data-aos-delay="100">
-    <span class="lang lang-fr visible">Si les lumières clignotent ou si le disjoncteur saute, ne l’ignorez pas! ⚠️</span>
-    <span class="lang lang-en">If lights flicker or breakers trip, don’t ignore it! ⚠️</span>
-    <span class="lang lang-ar">إذا كانت الأضواء تومض أو رحلة القواطع أو شرارة منافذ البيع - لا تتجاهلها! ⚠️</span>
+    إذا كانت الأضواء تومض أو رحلة القواطع أو شرارة منافذ البيع - لا تتجاهلها! ⚠️
   </p>
-
   <p data-aos="fade-up" data-aos-delay="200">
-    <span class="lang lang-fr">Ces petits signes peuvent indiquer des problèmes plus graves. Chez OHM GOLDEN, nous les réglons avant qu’ils ne deviennent dangereux 💪</span>
-    <span class="lang lang-en">These small signs could mean bigger issues. At OHM GOLDEN, we fix them before they become dangerous 💪</span>
-    <span class="lang lang-ar">هذه العلامات الصغيرة يمكن أن تعني مشاكل أكبر في انتظار حدوثها. عند أوم جولدن نصلحها قبل ما تصير خطيرة 💪</span>
+    هذه العلامات الصغيرة يمكن أن تعني مشاكل أكبر في انتظار حدوثها. عند أوم جولدن نصلحها قبل ما تصير خطيرة 💪
   </p>
 </section>
 
