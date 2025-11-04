@@ -4,6 +4,8 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>OHM GOLDEN — Services Électriques à Montréal</title>
+
+<!-- Fonts & AOS -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
@@ -39,11 +41,11 @@ img{display:block;max-width:100%;height:auto;}
 /* Hero */
 .hero{
   position:relative;
+  display:grid;grid-template-columns:1fr 500px;gap:32px;align-items:center;
   border-radius:20px;
   padding:80px 60px;
   color:#fff;
   overflow:hidden;
-  display:flex; justify-content:center; align-items:center;
 }
 .hero::before{
   content:"";
@@ -52,13 +54,13 @@ img{display:block;max-width:100%;height:auto;}
   z-index:0;filter:blur(1.5px) brightness(0.7);
 }
 .hero-card{
-  position:relative; z-index:1; max-width:700px;
+  position:relative;z-index:1;
   background:rgba(255,255,255,0.95);
   border-radius:var(--radius);
   padding:36px;
   box-shadow:var(--shadow-strong);
-  text-align:center;
-  transition: transform .3s ease, box-shadow .3s ease;
+  transition:transform .3s ease, box-shadow .3s ease;
+  color:#111;
 }
 .hero-card:hover{
   transform:translateY(-6px) scale(1.02);
@@ -66,35 +68,22 @@ img{display:block;max-width:100%;height:auto;}
 }
 .hero h2{margin:0 0 14px;color:var(--primary);font-size:38px;font-weight:800;text-shadow: 1px 1px 5px rgba(0,0,0,0.4);}
 .hero p.lead{margin-bottom:20px;color:var(--muted);font-size:16px;}
-.badges{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:24px;}
+.badges{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;}
 .badge{background:linear-gradient(90deg, rgba(230,0,0,0.15), rgba(242,201,76,0.08));padding:10px 16px;border-radius:999px;font-weight:700;color:var(--primary);box-shadow:var(--shadow-light);display:inline-flex;align-items:center;gap:8px;font-size:14px;}
-.cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:12px;}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;}
 .btn{padding:14px 20px;border-radius:14px;font-weight:800;border:0;cursor:pointer;transition:all .4s ease;}
 .btn-primary{background:var(--cta-gradient);color:#fff;box-shadow:0 10px 30px rgba(0,27,77,0.3);background-size:200% 100%;}
 .btn-primary:hover{background-position:100% 0;transform:translateY(-3px) scale(1.03);box-shadow:0 18px 50px rgba(0,0,0,0.25);}
 .btn-outline{background:transparent;border:2px solid var(--primary);color:var(--primary);}
 .btn-outline:hover{background:var(--primary);color:#fff;transform:scale(1.05);}
-.cta-note{margin-top:16px;font-size:14px;color:var(--muted);}
+.cta-note{margin-top:16px;font-size:14px;color:var(--muted);text-align:center;}
 
 /* Services Section */
 .section{margin-top:80px; padding:0 20px;}
 .section h3{font-size:28px;margin-bottom:30px;color:var(--primary);text-align:center;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
-.service{
-  padding:30px;border-radius:20px;text-align:center;
-  transition:transform .4s ease, box-shadow .4s ease;
-}
-.service.premium{
-  background: linear-gradient(135deg, #001b4d 0%, #003d8a 100%);
-  color:#fff;
-  box-shadow:0 15px 50px rgba(0,27,77,0.25);
-}
-.service.premium:hover{
-  transform:translateY(-8px) scale(1.03);
-  box-shadow:0 25px 70px rgba(0,27,77,0.35);
-}
-.service h4{font-size:20px;font-weight:700;margin-bottom:12px;color:var(--gold);}
-.service p{font-size:15px;color:rgba(255,255,255,0.85);line-height:1.6;}
+.service{background:var(--card-bg);padding:24px;border-radius:var(--radius);box-shadow:var(--shadow-light);transition:all .4s ease;text-align:center;position:relative;overflow:hidden;}
+.service:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 50px rgba(0,0,0,0.15);}
 
 /* Why Choose Us Section */
 .why-us{background:linear-gradient(90deg, #f8f9fb, #e6f0ff);padding:60px 20px;border-radius:20px;margin-top:60px;}
@@ -122,15 +111,16 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
 [dir="rtl"] .topbar{direction:rtl}
 [dir="rtl"] .brand{flex-direction:row-reverse}
 [dir="rtl"] .cta-row{justify-content:flex-end}
+[dir="rtl"] .hero{grid-template-columns:500px 1fr}
 
 /* Responsive */
-@media (max-width:1024px){.hero{padding:60px 30px;}}
-@media (max-width:900px){.hero h2{font-size:32px}.hero p.lead{font-size:15px}}
-@media (max-width:600px){.hero{padding:40px 20px}.cta-row{flex-direction:column}.btn{width:100%;text-align:center}}
+@media (max-width:1024px){.hero{grid-template-columns:1fr 1fr;}}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:24px}.hero h2{font-size:32px}.hero p.lead{font-size:15px}}
+@media (max-width:600px){.hero{grid-template-columns:1fr;}.cta-row{flex-direction:column;}.btn{width:100%;text-align:center}}
 </style>
 </head>
-
 <body>
+
 <header class="topbar" role="banner">
   <div class="brand" aria-label="OHM GOLDEN">
     <img src="images/logo.png" alt="OHM GOLDEN logo">
@@ -153,14 +143,17 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
 </header>
 
 <main>
+<!-- Hero Section -->
 <section class="hero" data-aos="fade-up">
   <div class="hero-card" data-aos="fade-right">
     <h2 class="lang lang-fr visible">Électriciens Certifiés — Intervention Rapide</h2>
     <h2 class="lang lang-en">Certified Electricians — Fast Response</h2>
     <h2 class="lang lang-ar">فنيون كهربائيون معتمدون — استجابة سريعة</h2>
+
     <p class="lead lang lang-fr visible">OHM GOLDEN offre des solutions complètes : installations, rénovations, réparations et inspections.</p>
     <p class="lead lang lang-en">OHM GOLDEN provides full solutions: installations, renovations, repairs and inspections.</p>
     <p class="lead lang lang-ar">تقدّم OHM GOLDEN خدمات شاملة: تركيب، تجديد، إصلاحات وفحوصات كهربائية.</p>
+
     <div class="badges">
       <div class="badge">RBQ • 5850-3566-01</div>
       <div class="badge lang lang-fr visible">Devis gratuit</div>
@@ -168,6 +161,7 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
       <div class="badge lang lang-ar">عرض مجاني</div>
       <div class="badge">24/7 Service d'urgence</div>
     </div>
+
     <div class="cta-row">
       <a class="btn btn-primary lang lang-fr visible" href="tel:5145667760">Appelez-nous: 514-566-7760</a>
       <a class="btn btn-primary lang lang-en" href="tel:5145667760">Call us: 514-566-7760</a>
@@ -191,7 +185,7 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
   <h3 class="lang lang-ar" data-aos="fade-up">خدماتنا</h3>
 
   <div class="grid">
-    <div class="service premium" data-aos="fade-up" data-aos-delay="100">
+    <div class="service" data-aos="fade-up" data-aos-delay="100">
       <h4 class="lang lang-fr">Installation & Éclairage</h4>
       <h4 class="lang lang-en">Installation & Lighting</h4>
       <h4 class="lang lang-ar">التركيب والإضاءة</h4>
@@ -199,7 +193,7 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
       <p class="lang lang-en">Complete solutions for residential & commercial.</p>
       <p class="lang lang-ar">حلول كاملة للمنازل والمحلات التجارية.</p>
     </div>
-    <div class="service premium" data-aos="fade-up" data-aos-delay="200">
+    <div class="service" data-aos="fade-up" data-aos-delay="200">
       <h4 class="lang lang-fr">Rénovations Électriques</h4>
       <h4 class="lang lang-en">Electrical Renovations</h4>
       <h4 class="lang lang-ar">تجديدات كهربائية</h4>
@@ -207,15 +201,15 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
       <p class="lang lang-en">Upgrades for safety and efficiency.</p>
       <p class="lang lang-ar">تحديثات للسلامة والكفاءة.</p>
     </div>
-    <div class="service premium" data-aos="fade-up" data-aos-delay="300">
-      <h4 class="lang lang-fr">Réparation de Pannes</h4>
+    <div class="service" data-aos="fade-up" data-aos-delay="300">
+      <h4 class="lang lang-fr">Détection & Réparation</h4>
       <h4 class="lang lang-en">Troubleshooting & Repairs</h4>
       <h4 class="lang lang-ar">تشخيص وإصلاح الأعطال</h4>
       <p class="lang lang-fr">Intervention rapide 24/7 pour toutes pannes électriques.</p>
       <p class="lang lang-en">24/7 fast response for electrical faults.</p>
       <p class="lang lang-ar">استجابة سريعة 24/7 لجميع الأعطال الكهربائية.</p>
     </div>
-    <div class="service premium" data-aos="fade-up" data-aos-delay="400">
+    <div class="service" data-aos="fade-up" data-aos-delay="400">
       <h4 class="lang lang-fr">Mises à Niveau de Panneaux</h4>
       <h4 class="lang lang-en">Panel Upgrades</h4>
       <h4 class="lang lang-ar">ترقيات اللوحة</h4>
@@ -223,7 +217,7 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
       <p class="lang lang-en">Replacement and upgrades of electrical panels.</p>
       <p class="lang lang-ar">استبدال وتحديث اللوحات.</p>
     </div>
-    <div class="service premium" data-aos="fade-up" data-aos-delay="500">
+    <div class="service" data-aos="fade-up" data-aos-delay="500">
       <h4 class="lang lang-fr">Inspections Électriques</h4>
       <h4 class="lang lang-en">Electrical Inspections</h4>
       <h4 class="lang lang-ar">عمليات التفتيش الكهربائية</h4>
@@ -234,7 +228,7 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
   </div>
 </section>
 
-<!-- Why Choose Us -->
+<!-- Why Choose Us Section -->
 <section class="why-us">
   <h3 data-aos="fade-up">Pourquoi Choisir OHM GOLDEN?</h3>
   <div class="why-grid">
@@ -253,14 +247,24 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
   </div>
 </section>
 
-<!-- Safety -->
+<!-- Safety Tips Section -->
 <section class="safety">
-  <h3 data-aos="fade-up">🏠 سلامتك تبدأ بالكهرباء الخاصة بك!</h3>
+  <h3 data-aos="fade-up">
+    <span class="lang lang-fr visible">🏠 Votre sécurité commence avec l'électricité!</span>
+    <span class="lang lang-en">🏠 Your safety starts with your electricity!</span>
+    <span class="lang lang-ar">🏠 سلامتك تبدأ بالكهرباء الخاصة بك!</span>
+  </h3>
+
   <p data-aos="fade-up" data-aos-delay="100">
-    إذا كانت الأضواء تومض أو رحلة القواطع أو شرارة منافذ البيع - لا تتجاهلها! ⚠️
+    <span class="lang lang-fr visible">Si les lumières clignotent ou si le disjoncteur saute, ne l’ignorez pas! ⚠️</span>
+    <span class="lang lang-en">If lights flicker or breakers trip, don’t ignore it! ⚠️</span>
+    <span class="lang lang-ar">إذا كانت الأضواء تومض أو رحلة القواطع أو شرارة منافذ البيع - لا تتجاهلها! ⚠️</span>
   </p>
+
   <p data-aos="fade-up" data-aos-delay="200">
-    هذه العلامات الصغيرة يمكن أن تعني مشاكل أكبر في انتظار حدوثها. عند أوم جولدن نصلحها قبل ما تصير خطيرة 💪
+    <span class="lang lang-fr">Ces petits signes peuvent indiquer des problèmes plus graves. Chez OHM GOLDEN, nous les réglons avant qu’ils ne deviennent dangereux 💪</span>
+    <span class="lang lang-en">These small signs could mean bigger issues. At OHM GOLDEN, we fix them before they become dangerous 💪</span>
+    <span class="lang lang-ar">هذه العلامات الصغيرة يمكن أن تعني مشاكل أكبر في انتظار حدوثها. عند أوم جولدن نصلحها قبل ما تصير خطيرة 💪</span>
   </p>
 </section>
 
@@ -279,10 +283,10 @@ footer a.facebook svg{width:18px;height:18px;fill:currentColor;}
 <script>
 AOS.init({once:true, easing:'ease-out-cubic', duration:1000});
 
+// Language Switcher
 const AVAILABLE=['fr','en','ar'];
 const defaultLang='fr';
 const langButtons=document.querySelectorAll('.lang-btn');
-
 function showLang(lang){
   if(!AVAILABLE.includes(lang)) lang=defaultLang;
   document.querySelectorAll('.lang').forEach(el=>el.classList.remove('visible'));
@@ -294,7 +298,6 @@ function showLang(lang){
   });
   try{localStorage.setItem('ohm_lang',lang);}catch(e){}
 }
-
 (function initLang(){
   const stored=(function(){try{return localStorage.getItem('ohm_lang');}catch(e){return null}})();
   const start=stored||defaultLang;
